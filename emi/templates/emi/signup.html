@@ -1,8 +1,125 @@
-<!-- emi/templates/emi/signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        /* Fullscreen Background */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f8ff;
+            position: relative;
+            color: #333;
+        }
 
-<h2>Sign Up</h2>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign Up</button>
-</form>
+        /* Animated Emojis */
+        .emoji {
+            position: absolute;
+            font-size: 2.5rem;
+            animation: floatEmoji 5s infinite;
+        }
+
+        .emoji:nth-child(1) { top: 15%; left: 5%; animation-duration: 6s; }
+        .emoji:nth-child(2) { top: 30%; left: 20%; animation-duration: 5s; }
+        .emoji:nth-child(3) { top: 55%; left: 35%; animation-duration: 4s; }
+        .emoji:nth-child(4) { top: 75%; left: 50%; animation-duration: 6s; }
+        .emoji:nth-child(5) { top: 10%; left: 70%; animation-duration: 7s; }
+        .emoji:nth-child(6) { top: 40%; left: 80%; animation-duration: 5s; }
+        .emoji:nth-child(7) { top: 65%; left: 90%; animation-duration: 8s; }
+
+        @keyframes floatEmoji {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-20px); opacity: 0.8; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Signup Box */
+        .signup-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .signup-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #444;
+        }
+
+        .signup-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .signup-container input {
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .signup-container button {
+            padding: 12px;
+            background-color: #ffcc00;
+            color: #444;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .signup-container button:hover {
+            background-color: #ffdd44;
+        }
+
+        .signup-container a {
+            color: #ff9900;
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .signup-container a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Emoji Animation -->
+    <div class="emoji">😊</div>
+    <div class="emoji">🎉</div>
+    <div class="emoji">💡</div>
+    <div class="emoji">⭐</div>
+    <div class="emoji">🌈</div>
+    <div class="emoji">🙌</div>
+    <div class="emoji">✨</div>
+
+    <!-- Signup Form -->
+    <div class="signup-container">
+        <h2>Join Us! 🎉</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Sign Up</button>
+            <a href="http://127.0.0.1:8000/login/">Already have an account? Login</a>
+        </form>
+    </div>
+</body>
+</html>

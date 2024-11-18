@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
-        /* Fullscreen Gradient Animation */
+        /* Fullscreen Background */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -14,26 +14,42 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd, #c2e9fb);
-            background-size: 300% 300%;
-            animation: gradientShift 10s ease infinite;
+            background-color: #f0f8ff;
+            position: relative;
             color: #333;
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Animated Emojis */
+        .emoji {
+            position: absolute;
+            font-size: 2.5rem;
+            animation: floatEmoji 5s infinite;
+        }
+
+        .emoji:nth-child(1) { top: 10%; left: 5%; animation-duration: 7s; }
+        .emoji:nth-child(2) { top: 30%; left: 15%; animation-duration: 5s; }
+        .emoji:nth-child(3) { top: 50%; left: 25%; animation-duration: 6s; }
+        .emoji:nth-child(4) { top: 70%; left: 35%; animation-duration: 4s; }
+        .emoji:nth-child(5) { top: 20%; left: 50%; animation-duration: 8s; }
+        .emoji:nth-child(6) { top: 40%; left: 70%; animation-duration: 5s; }
+        .emoji:nth-child(7) { top: 60%; left: 85%; animation-duration: 6s; }
+        .emoji:nth-child(8) { top: 10%; left: 75%; animation-duration: 7s; }
+
+        @keyframes floatEmoji {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-20px); opacity: 0.8; }
+            100% { transform: translateY(0); opacity: 1; }
         }
 
         /* Login Box */
         .login-container {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.95);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             width: 350px;
             text-align: center;
+            z-index: 2;
         }
 
         .login-container h2 {
@@ -57,8 +73,8 @@
 
         .login-container button {
             padding: 12px;
-            background-color: #6c63ff;
-            color: #fff;
+            background-color: #ffcc00;
+            color: #444;
             border: none;
             border-radius: 8px;
             font-size: 16px;
@@ -67,11 +83,11 @@
         }
 
         .login-container button:hover {
-            background-color: #5348c9;
+            background-color: #ffdd44;
         }
 
         .login-container a {
-            color: #6c63ff;
+            color: #ff9900;
             text-decoration: none;
             font-size: 14px;
             display: inline-block;
@@ -81,17 +97,29 @@
         .login-container a:hover {
             text-decoration: underline;
         }
+
     </style>
 </head>
 <body>
+    <!-- Emoji Animation -->
+    <div class="emoji">😊</div>
+    <div class="emoji">🎉</div>
+    <div class="emoji">😂</div>
+    <div class="emoji">🤩</div>
+    <div class="emoji">💖</div>
+    <div class="emoji">😎</div>
+    <div class="emoji">🥳</div>
+    <div class="emoji">👍</div>
+
     <!-- Login Form -->
     <div class="login-container">
-        <h2>Welcome Back</h2>
+        <h2>Welcome 😊</h2>
         <form method="POST">
             {% csrf_token %}
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button>
+            <a href="http://127.0.0.1:8000/signup/">Signup</a>
             <a href="#">Forgot your password?</a>
         </form>
     </div>
