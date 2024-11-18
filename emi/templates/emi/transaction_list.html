@@ -1,0 +1,23 @@
+<h2>Your Transactions</h2>
+<div>
+    <a href="{% url 'add_transaction' %}">Add New Transaction</a> | 
+    <a href="{% url 'emi_list' %}">EMI List</a> | 
+    <a href="{% url 'dashboard' %}">Dashboard</a>
+</div>
+
+<table>
+    <tr>
+        <th>Amount Given</th>
+        <th>Amount Returned</th>
+        <th>Description</th>
+        <th>Date</th>
+    </tr>
+    {% for transaction in transactions %}
+    <tr>
+        <td>{{ transaction.amount_given }}</td>
+        <td>{{ transaction.amount_returned }}</td>
+        <td>{{ transaction.description }}</td>
+        <td>{{ transaction.transaction_date }}</td>
+    </tr>
+    {% endfor %}
+</table>

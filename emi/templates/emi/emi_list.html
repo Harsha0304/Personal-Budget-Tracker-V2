@@ -1,0 +1,20 @@
+<!-- emi/templates/emi/emi_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI List</title>
+</head>
+<body>
+    <h2>Your EMIs</h2>
+    <ul>
+        {% for emi in emis %}
+            <li>
+                <p>Total Amount: {{ emi.total_amount }} - Paid: {{ emi.paid_amount }} - Pending: {{ emi.pending_amount }}</p>
+                <a href="{% url 'emi/update_emi_payment' emi.id %}">Update Payment</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

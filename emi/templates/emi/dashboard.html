@@ -1,0 +1,26 @@
+<!-- dashboard.html -->
+
+
+
+{% block content %}
+  <div class="dashboard-container">
+    <h1>Welcome to EMI Tracker Dashboard</h1>
+
+    <div class="project-info">
+      <h2>About This Project</h2>
+      <p>This project is an EMI Tracker that helps users manage their loan payments, track transactions, and maintain their finances. Developed as a final-year project, it provides features for adding EMIs, transactions, and tracking payments.</p>
+    </div>
+
+    <div class="about-me">
+      <h2>About the Developer</h2>
+      <p>Hi! I'm Harsha, the developer behind this project. I'm passionate about software development and have worked on various full-stack projects. This EMI Tracker is built using Django, with a focus on user experience and practicality.</p>
+    </div>
+
+    <div class="action-buttons">
+      <a href="{% url 'add_emi' %}" class="btn btn-primary">Add EMI</a>
+      <a href="{% url 'emi_list' %}" class="btn btn-primary">View EMIs</a>
+      <a href="{% url 'add_transaction' %}" class="btn btn-primary">Add Transaction</a>
+      <a href="{% url 'transaction_list' %}" class="btn btn-primary">View Transactions</a>
+    </div>
+  </div>
+{% endblock %}

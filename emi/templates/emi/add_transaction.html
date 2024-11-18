@@ -1,0 +1,22 @@
+<!-- emi/templates/emi/add_transaction.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Transaction</title>
+</head>
+<body>
+    <h2>Add Transaction</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="amount_given">Amount Given:</label>
+        <input type="number" name="amount_given" required><br>
+        <label for="amount_returned">Amount Returned:</label>
+        <input type="number" name="amount_returned" required><br>
+        <label for="description">Description:</label>
+        <textarea name="description" required></textarea><br>
+        <button type="submit">Save Transaction</button>
+    </form>
+</body>
+</html>
