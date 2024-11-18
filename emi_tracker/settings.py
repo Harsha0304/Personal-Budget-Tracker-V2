@@ -78,6 +78,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'emi_tracker.wsgi.application'
 
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
