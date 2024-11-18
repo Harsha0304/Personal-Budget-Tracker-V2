@@ -1,22 +1,34 @@
-<!-- emi/templates/emi/add_transaction.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Transaction</title>
-</head>
-<body>
-    <h2>Add Transaction</h2>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Add Transaction</h2>
+
     <form method="POST">
         {% csrf_token %}
-        <label for="amount_given">Amount Given:</label>
-        <input type="number" name="amount_given" required><br>
-        <label for="amount_returned">Amount Returned:</label>
-        <input type="number" name="amount_returned" required><br>
-        <label for="description">Description:</label>
-        <textarea name="description" required></textarea><br>
-        <button type="submit">Save Transaction</button>
+        
+        <div class="mb-3">
+            <label for="amount_given" class="form-label">Amount Given</label>
+            <input type="number" name="amount_given" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="amount_returned" class="form-label">Amount Returned</label>
+            <input type="number" name="amount_returned" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="description" class="form-control" required></textarea>
+        </div>
+
+        <div class="mb-3 text-center">
+            <button type="submit" class="btn btn-primary">Save Transaction</button>
+        </div>
     </form>
-</body>
-</html>
+    
+    <div class="mt-3 text-center">
+        <a href="{% url 'emi:transaction_list' %}" class="btn btn-outline-secondary btn-sm">Back to Transaction List</a>
+    </div>
+</div>
+{% endblock %}

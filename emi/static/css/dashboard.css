@@ -1,85 +1,69 @@
-/* emi/static/css/dashboard.css */
-
+/* General Body Styling */
 body {
     font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f9f9f9;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa; /* Bootstrap light gray */
 }
 
-.dashboard-container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 25px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
+/* Header Styling */
 header {
-    text-align: center;
-    padding: 20px;
-    background: linear-gradient(45deg, #4CAF50, #2E8B57);
-    color: white;
-    border-radius: 8px;
+    background-color: #e3f2fd;
+    border-bottom: 4px solid #90caf9;
 }
 
 header h1 {
-    margin: 0;
-    font-size: 2.5em;
+    animation: fadeInDown 1.2s;
+}
+
+header p {
+    animation: fadeInUp 1.2s;
+}
+
+/* Action Cards */
+.action-card {
+    border: none;
+    border-radius: 12px;
+    background-color: #ffffff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.action-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.action-card h5 {
     font-weight: bold;
-    letter-spacing: 1px;
+    color: #444;
 }
 
-.project-info {
-    margin-top: 30px;
-    text-align: center;
-}
-
-.project-info h2 {
-    color: #333;
-    font-weight: 600;
-}
-
-.project-info p {
-    font-size: 1.1em;
-    line-height: 1.8;
-    color: #666;
-}
-
-.actions {
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.actions a {
-    padding: 12px 20px;
-    font-size: 1.1em;
-    color: white;
-    background-color: #4CAF50;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.actions a:hover {
-    background-color: #3e8e41;
-    transform: translateY(-2px);
-}
-
+/* Footer Styling */
 footer {
-    text-align: center;
-    background-color: #343a40; /* Dark gray */
+    font-size: 0.9rem;
+    background-color: #0d6efd;
     color: #ffffff;
-    padding: 10px 0;
-    margin-top: 40px;
-    font-size: 0.9em;
 }
 
-footer p {
-    margin: 0;
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
