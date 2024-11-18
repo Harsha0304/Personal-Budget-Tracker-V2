@@ -1,26 +1,77 @@
-<!-- dashboard.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Personal Budjet Tracker</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'emi:dashboard' %}">EMI Tracker</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'emi:logout' %}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'emi:signup' %}">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'emi:login' %}">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="mb-4">Welcome to EMI Tracker</h1>
+            <!-- <p class="lead">This project helps you track your EMI payments, record transactions, and manage your finances efficiently.</p> -->
+            <!-- <p><strong>Developer:</strong> Harsha</p> -->
+            <!-- <p>This application was developed by Harsha, a passionate software developer with a focus on building practical applications.</p> -->
+        </div>
 
-
-{% block content %}
-  <div class="dashboard-container">
-    <h1>Welcome to EMI Tracker Dashboard</h1>
-
-    <div class="project-info">
-      <h2>About This Project</h2>
-      <p>This project is an EMI Tracker that helps users manage their loan payments, track transactions, and maintain their finances. Developed as a final-year project, it provides features for adding EMIs, transactions, and tracking payments.</p>
+        <div class="row mt-5">
+            {% if user.is_authenticated %}
+                <div class="col-md-3 mb-3">
+                    <a href="{% url 'emi:add_emi' %}" class="btn btn-primary w-100">Add EMI</a>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <a href="{% url 'emi:emi_list' %}" class="btn btn-secondary w-100">View EMI List</a>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <a href="{% url 'emi:add_transaction' %}" class="btn btn-success w-100">Add Transaction</a>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <a href="{% url 'emi:transaction_list' %}" class="btn btn-warning w-100">View Transactions</a>
+                </div>
+            {% else %}
+                <p class="text-center">
+                    Please <a href="{% url 'emi:login' %}">login</a> or 
+                    <a href="{% url 'emi:signup' %}">sign up</a> to access the features.
+                </p>
+            {% endif %}
+        </div>
     </div>
 
-    <div class="about-me">
-      <h2>About the Developer</h2>
-      <p>Hi! I'm Harsha, the developer behind this project. I'm passionate about software development and have worked on various full-stack projects. This EMI Tracker is built using Django, with a focus on user experience and practicality.</p>
-    </div>
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2024 EMI Tracker by Harsha. All Rights Reserved.</p>
+    </footer>
 
-    <div class="action-buttons">
-      <a href="{% url 'add_emi' %}" class="btn btn-primary">Add EMI</a>
-      <a href="{% url 'emi_list' %}" class="btn btn-primary">View EMIs</a>
-      <a href="{% url 'add_transaction' %}" class="btn btn-primary">Add Transaction</a>
-      <a href="{% url 'transaction_list' %}" class="btn btn-primary">View Transactions</a>
-    </div>
-  </div>
-{% endblock %}
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

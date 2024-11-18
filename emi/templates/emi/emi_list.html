@@ -1,20 +1,29 @@
-<!-- emi/templates/emi/emi_list.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMI List</title>
-</head>
-<body>
-    <h2>Your EMIs</h2>
-    <ul>
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Your EMI List</h2>
+<table class="table table-striped mt-4">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Total Amount</th>
+            <th>Monthly Payment</th>
+            <th>Paid Amount</th>
+            <th>Pending Amount</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
         {% for emi in emis %}
-            <li>
-                <p>Total Amount: {{ emi.total_amount }} - Paid: {{ emi.paid_amount }} - Pending: {{ emi.pending_amount }}</p>
-                <a href="{% url 'emi/update_emi_payment' emi.id %}">Update Payment</a>
-            </li>
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ emi.total_amount }}</td>
+            <td>{{ emi.monthly_payment }}</td>
+            <td>{{ emi.paid_amount }}</td>
+            <td>{{ emi.pending_amount }}</td>
+            <td><a href="{% url 'emi:update_emi_payment' emi.id %}" class="btn btn-sm btn-info">Update</a></td>
+        </tr>
         {% endfor %}
-    </ul>
-</body>
-</html>
+    </tbody>
+</table>
+{% endblock %}
